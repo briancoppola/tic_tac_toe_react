@@ -1,0 +1,244 @@
+/* Colors */
+
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-black-shadow: rgba(0, 0, 0, 0.4);
+  --color-black-backdrop: rgba(0, 0, 0, 0.3);
+  --color-ui-light: rgb(195, 55, 100);
+  --color-ui-dark: rgb(33, 42, 122);
+  --color-ui-middle: rgb(114, 48, 111);
+  --color-gray-light-1: #faf9f9;
+  --color-gray-light-2: #f4f2f2;
+  --color-gray-light-3: #f0eeee;
+  --color-gray-light-4: #d5d5d5;
+  --color-gray-light-5: #aaa;
+  --color-gray-light-6: #999;
+  --color-gray-light-7: #666;
+  --color-gray-light-8: #444;
+
+  --width: 50rem;
+  --ui-x-stroke: 80%;
+  --ui-circle-size: 70%;
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.3;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to left top, var(--color-ui-light), var(--color-ui-dark));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 0 min(3vw, 3rem);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main containers */
+
+.container {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.header,
+.main,
+.footer {
+  text-align: center;
+}
+
+/* Header */
+
+.header {
+  padding: 4rem;
+}
+.header h1 {
+  font-size: 3.4rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+.header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-gray-light-5);
+}
+
+/* Status bar */
+
+.status {
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 0 calc(var(--width) / 20);
+  height: calc(var(--width) / 7);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.status div:nth-child(2) {
+  margin-left: 3rem;
+}
+.status p[data-player='0'] {
+  color: var(--color-ui-dark);
+}
+.status p[data-player='0']::before {
+  content: '\02715';
+}
+.status p[data-player='1'] {
+  color: var(--color-ui-light);
+}
+.status p[data-player='1']::before {
+  content: 'O';
+}
+
+.button {
+  border: none;
+  margin: 0;
+  padding: 1rem 1.4rem;
+  color: var(--color-white);
+  background-color: var(--color-ui-middle);
+  border-radius: calc(var(--width) / 50);
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Board */
+
+.board,
+.status {
+  width: 100%;
+  background-color: var(--color-gray-light-3);
+  border-radius: calc(var(--width) / 20);
+  box-shadow: 0.1rem 0.1rem 1rem var(--color-black-shadow);
+}
+
+.board {
+  height: var(--width);
+  padding: calc(var(--width) / 15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: calc(var(--width) / 48);
+  background-color: var(--color-black);
+}
+
+.square {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--color-gray-light-3);
+  cursor: pointer;
+}
+.square:disabled {
+  cursor: initial;
+}
+
+.square[data-winning-square].square[data-player='0'] {
+  --winner-color: var(--color-ui-dark);
+  background-color: var(--winner-color);
+  animation: winnerBlinkBackground 0.3s 3 ease-in-out;
+}
+.square[data-winning-square].square[data-player='0']::before,
+.square[data-winning-square].square[data-player='0']::after {
+  --winner-color: var(--color-ui-dark);
+  background-color: var(--color-gray-light-3);
+  animation: winnerBlinkSymbol 0.3s 3 ease-in-out;
+}
+.square[data-winning-square].square[data-player='1'],
+.square[data-winning-square].square[data-player='1']::after {
+  --winner-color: var(--color-ui-light);
+  background-color: var(--color-ui-light);
+  animation: winnerBlinkBackground 0.3s 3 ease-in-out;
+}
+.square[data-winning-square].square[data-player='1']::before {
+  --winner-color: var(--color-ui-light);
+  background-color: var(--color-gray-light-3);
+  animation: winnerBlinkSymbol 0.3s 3 ease-in-out;
+}
+@keyframes winnerBlinkBackground {
+  0% {
+    background-color: var(--winner-color);
+  }
+  50% {
+    background-color: var(--color-gray-light-3);
+  }
+  100% {
+    background-color: var(--winner-color);
+  }
+}
+@keyframes winnerBlinkSymbol {
+  0% {
+    background-color: var(--color-gray-light-3);
+  }
+  50% {
+    background-color: var(--winner-color);
+  }
+  100% {
+    background-color: var(---color-gray-light-3);
+  }
+}
+
+/* X and O styles */
+
+.square[data-player='0']::before,
+.square[data-player='0']::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--ui-x-stroke) * 0.15);
+  height: var(--ui-x-stroke);
+  background-color: var(--color-ui-dark);
+}
+.square[data-player='0']::before {
+  transform: rotate(45deg);
+}
+.square[data-player='0']::after {
+  transform: rotate(-45deg);
+}
+
+.square[data-player='1']::before,
+.square[data-player='1']::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.square[data-player='1']::before {
+  width: var(--ui-circle-size);
+  height: var(--ui-circle-size);
+  background-color: var(--color-ui-light);
+}
+.square[data-player='1']::after {
+  width: calc(var(--ui-circle-size) * 0.67);
+  height: calc(var(--ui-circle-size) * 0.67);
+  background-color: var(--color-gray-light-3);
+}
