@@ -17,7 +17,7 @@
   --color-gray-light-7: #666;
   --color-gray-light-8: #444;
 
-  --width: 50rem;
+  --width: 54rem;
   --ui-x-stroke: 80%;
   --ui-circle-size: 70%;
 }
@@ -50,18 +50,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 /* Main containers */
 
 .container {
   width: 100%;
-  max-width: 50rem;
+  height: 100%;
+  max-width: var(--width);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header,
 .main,
 .footer {
+  width: 100%;
   text-align: center;
+}
+
+.main {
+  flex: 1;
 }
 
 /* Header */
@@ -78,6 +92,18 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-gray-light-5);
+}
+
+/* Footer */
+
+.footer {
+  padding: 8rem 0;
+}
+.footer p {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-white);
+  font-size: 1.4rem;
+  line-height: 2rem;
 }
 
 /* Status bar */

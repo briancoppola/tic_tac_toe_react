@@ -111,10 +111,10 @@ const Game = () => {
   };
 
   return (
-    <div className="container">
+    <>
       <Status gameState={gameState} resetGame={resetGame} />
       <Board gameState={gameState} squares={squares} playerMove={playerMoveHandler} />
-    </div>
+    </>
   );
 };
 
