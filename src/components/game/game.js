@@ -43,10 +43,6 @@ const Game = () => {
     updatePlayer();
   };
 
-  // useEffect(() => {
-
-  // }, [squares]);
-
   const updatePlayer = () => {
     setGameState((prevGameState) => {
       const currentPlayer = prevGameState.currentPlayer;
@@ -58,6 +54,12 @@ const Game = () => {
   const endGame = (path) => {
     const winningPlayer = path ? gameState.currentPlayer : null;
     const winningSquares = path ? path : [];
+
+    setSquares((prevSquares) => {
+      return prevSquares.map((square) => {
+        return square === null ? 2 : square;
+      });
+    });
 
     setGameState((prevGameState) => {
       return { ...prevGameState, state: 'end', winner: winningPlayer, winningSquares: winningSquares };
@@ -83,14 +85,6 @@ const Game = () => {
       }
     }
     return null;
-
-    // const isRowComplete = (row) => {
-    //   const symbols = row.map((i) => sq[i]);
-    //   console.log(symbols[0]);
-    //   return symbols.every((i) => i !== null && i === symbols[0]);
-    // };
-
-    // console.log(winningPaths.map(isRowComplete));
   };
 
   const resetGame = () => {
