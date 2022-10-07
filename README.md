@@ -20,6 +20,7 @@ $ npm install
 $ npm 
 ```
 
-## To Do
+## To do
 - Create interface to allow players to choose player names and start player.
 - Make page fully responsive and set a 1:1 aspect ratio for the board so it scales evenly.
+- Allow players to choose size of grid (3x3 - 7x7)?
