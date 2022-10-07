@@ -22,4 +22,4 @@ $ npm
 
 ## To Do
 - Create interface to allow players to choose player names and start player.
-- Make page fully responsive by setting a 1:1 aspect ratio for the board. (Page is fully responsive otherwise.) 
+- Make page fully responsive and set a 1:1 aspect ratio for the board so it scales evenly.
