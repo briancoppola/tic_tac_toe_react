@@ -3,9 +3,15 @@ A React-based Tic-tac-toe game
 
 ## Description
 
-This is just a simple pass-and-play version of Tic-tac-toe, using React, JavaScript, CSS, and HTML. The 'X' player always makes the first move (for now!). When one player wins, the status bar will announce that player's victory, and their winning pieces on the board will briefly flash in their color (CSS animation). Otherwise, the game will end in a draw.
+This is just a simple pass-and-play version of Tic-tac-toe, using React, JavaScript, CSS, and HTML. The 'X' player always makes the first move (for now!). When one player wins, the status bar will announce that player's victory, and their winning pieces on the board will briefly flash in their color. Otherwise, the game will end in a draw.
 
 After the game ends, a replay button appears in the status bar to offer the user a chance to reset and replay the game.
+
+## Features
+
+- Game is playable with the keyboard as well as the mouse
+- Status bar that shows current player's turn as well as the game winner and replay button
+- CSS animation that flashes winning player's pieces on board
 
 ## Screenshot
 
