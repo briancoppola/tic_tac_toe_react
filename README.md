@@ -1,4 +1,4 @@
-# react_tic_tac_toe
+# tic_tac_toe_react
 A React-based Tic-tac-toe game
 
 ## Description
